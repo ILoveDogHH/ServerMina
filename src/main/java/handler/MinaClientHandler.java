@@ -1,9 +1,17 @@
 package handler;
 
+import code.OpcodeEnum;
+import message.AbstractMessage;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
 
 public class MinaClientHandler extends IoHandlerAdapter {
+    private static HandlerAdapter controllerHandler;
+
+    public MinaClientHandler(){
+        controllerHandler = new ControllerHandler();
+    }
+
     // 当客户端连接进入时
     @Override
     public void sessionOpened(IoSession session) throws Exception {
@@ -20,8 +28,19 @@ public class MinaClientHandler extends IoHandlerAdapter {
     @Override
     public void messageReceived(IoSession session, Object message)
             throws Exception {
-
-        System.out.println("服务器返回的数据：" + message.toString());
+        AbstractMessage<?> messageReceived = (AbstractMessage<?>) message;
+        int opcode = messageReceived.getOpcode();
+        HandlerAdapter adapter = null;
+        OpcodeEnum opcodeEnum = OpcodeEnum.getEnum(opcode);
+        switch (opcodeEnum){
+            case DefaultReceiveMessage:
+                adapter = controllerHandler;
+                break;
+            default:
+                break;
+        }
+        //具体执行方法
+        adapter.execute();
     }
 
     @Override
@@ -35,5 +54,6 @@ public class MinaClientHandler extends IoHandlerAdapter {
         System.out
                 .println("one Client Connection" + session.getRemoteAddress());
     }
+
 
 }
