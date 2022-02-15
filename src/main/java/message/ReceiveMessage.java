@@ -15,6 +15,8 @@ public abstract class ReceiveMessage<T> extends AbstractMessage<T> implements Me
 
     public ReceiveMessage(int index, int opcode, IoSession ioSession, IoBuffer ioBuffer) {
         super(index, opcode);
+        this.ioSession = ioSession;
+        this.remain = ioBuffer;
     }
 
 

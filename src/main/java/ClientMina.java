@@ -1,6 +1,7 @@
 
 import code.ServerDecode;
 import code.ServerEncode;
+import com.alibaba.fastjson.JSONArray;
 import handler.MinaClientHandler;
 import message.DefaultSendMessage;
 import org.apache.mina.core.filterchain.DefaultIoFilterChainBuilder;
@@ -38,7 +39,12 @@ public class ClientMina {
 
         //Wait for the connection attempt to be finished.
         cf.awaitUninterruptibly();
-        cf.getSession().write(new DefaultSendMessage(1,1001,1,"这是一个测试的数据啊啊啊啊"));
+        JSONArray result = new JSONArray();
+        JSONArray params = new JSONArray();
+        params.add(51301536);
+        result.add("UserLogin");
+        result.add(params);
+        cf.getSession().write(new DefaultSendMessage(1,1001,1,result.toJSONString()));
         cf.getSession().getCloseFuture().awaitUninterruptibly();
         connector.dispose();
     }

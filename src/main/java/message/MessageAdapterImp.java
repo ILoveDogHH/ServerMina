@@ -6,7 +6,7 @@ import org.apache.mina.core.session.IoSession;
 
 public class MessageAdapterImp<T> implements MessageAdapter{
 
-    public AbstractMessage<T> getMessage(IoSession ioSession, IoBuffer remain){
+    public ReceiveMessage<T> getMessage(IoSession ioSession, IoBuffer remain){
         int index = remain.getInt();
         int opcode = remain.getInt();
         OpcodeEnum opcodeEnum = OpcodeEnum.getEnum(opcode);

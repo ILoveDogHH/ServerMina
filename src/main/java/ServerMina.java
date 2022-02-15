@@ -36,10 +36,8 @@ public class ServerMina {
         // 协议解析，采用mina现成的UTF-8字符串处理方式
 
         acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter(new ServerEncode(), new ServerDecode()));
-        //启动默认线程池
-        acceptor.getFilterChain().addLast("executor", new ExecutorFilter());
-        //默认日志
-        acceptor.getFilterChain().addLast("logger", new LoggingFilter());
+//        //启动默认线程池
+       acceptor.getFilterChain().addLast("executor", new ExecutorFilter());
 
         // 设置消息处理类（创建、关闭Session，可读可写等等，继承自接口IoHandler）
         acceptor.setHandler(new MinaServerHandler());

@@ -5,7 +5,7 @@ import org.apache.mina.core.session.IoSession;
 
 public interface MessageAdapter<T> {
 
-    AbstractMessage<T> getMessage(IoSession ioSession, IoBuffer remain);
+    ReceiveMessage<T> getMessage(IoSession ioSession, IoBuffer remain);
 
 
 }

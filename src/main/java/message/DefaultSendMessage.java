@@ -22,7 +22,7 @@ public class DefaultSendMessage<T> extends SendMessage<String>{
         ioBuffer.putInt(index);
         ioBuffer.putInt(opcode);
         ioBuffer.putInt(uid);
-        ioBuffer.putPrefixedString(data, Charset.forName("UTF-8").newEncoder());
+        ioBuffer.putPrefixedString(data, 4, Charset.forName("UTF-8").newEncoder());
         ioBuffer.flip();
         return ioBuffer;
     }

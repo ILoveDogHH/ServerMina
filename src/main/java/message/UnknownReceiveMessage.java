@@ -10,7 +10,7 @@ public class UnknownReceiveMessage<T> extends ReceiveMessage<T>{
     }
 
     @Override
-    public void getRemain(IoBuffer ioBuffer) {
+    public void getRemain() {
 
     }
 }

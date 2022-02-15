@@ -1,15 +1,18 @@
 package handler;
 
 import code.OpcodeEnum;
+import logger.JLogger;
 import message.AbstractMessage;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
 
 public class MinaClientHandler extends IoHandlerAdapter {
     private static HandlerAdapter controllerHandler;
+    private static HandlerAdapter errorHandler;
 
     public MinaClientHandler(){
         controllerHandler = new ControllerHandler();
+        errorHandler = new ErrorHandler();
     }
 
     // 当客户端连接进入时
@@ -28,19 +31,7 @@ public class MinaClientHandler extends IoHandlerAdapter {
     @Override
     public void messageReceived(IoSession session, Object message)
             throws Exception {
-        AbstractMessage<?> messageReceived = (AbstractMessage<?>) message;
-        int opcode = messageReceived.getOpcode();
-        HandlerAdapter adapter = null;
-        OpcodeEnum opcodeEnum = OpcodeEnum.getEnum(opcode);
-        switch (opcodeEnum){
-            case DefaultReceiveMessage:
-                adapter = controllerHandler;
-                break;
-            default:
-                break;
-        }
-        //具体执行方法
-        adapter.execute();
+        JLogger.debug("客户端接收到服务器消息");
     }
 
     @Override
