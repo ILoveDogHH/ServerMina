@@ -42,7 +42,7 @@ public class ClientMina {
         JSONArray result = new JSONArray();
         JSONArray params = new JSONArray();
         params.add(51301536);
-        result.add("UserLogin");
+        result.add("userLogin");
         result.add(params);
         cf.getSession().write(new DefaultSendMessage(1,1001,1,result.toJSONString()));
         cf.getSession().getCloseFuture().awaitUninterruptibly();

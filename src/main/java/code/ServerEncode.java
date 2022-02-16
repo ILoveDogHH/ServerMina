@@ -10,14 +10,14 @@ import org.apache.mina.filter.codec.ProtocolEncoderOutput;
 public class ServerEncode extends ProtocolEncoderAdapter {
 
     //加密文件
-    Encry encry;
+    Encrypt encry;
 
     //压缩文件
     Compression compression;
 
 
     public ServerEncode(){
-        this.encry = new EncryImp();
+        this.encry = new EncryptImp();
         this.compression = new CompressionImp();
     }
 
@@ -40,8 +40,8 @@ public class ServerEncode extends ProtocolEncoderAdapter {
             bytes = compression.compression(bytes);
         }
         //加密
-        if(encry != null && encry.isEncry()){
-            bytes = encry.encry(bytes);
+        if(encry != null && encry.isEncrypt()){
+            bytes = encry.encrypt(bytes);
         }
         //获取到解密文件
 //        IoBuffer buf = IoBuffer.allocate(100);

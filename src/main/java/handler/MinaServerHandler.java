@@ -1,7 +1,6 @@
 package handler;
 
 import code.OpcodeEnum;
-import logger.JLogger;
 import message.AbstractMessage;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
@@ -12,8 +11,7 @@ public class MinaServerHandler extends IoHandlerAdapter {
     private static HandlerAdapter errorHandler;
 
     public MinaServerHandler(){
-        controllerHandler = new ControllerHandler();
-        errorHandler = new ErrorHandler();
+        controllerHandler = new ControllerHandler("controller");
     }
 
 
@@ -26,7 +24,8 @@ public class MinaServerHandler extends IoHandlerAdapter {
     /*
      * 这个方法是目前这个类里最主要的，
      * 当接收到消息，只要不是quit，就把服务器当前的时间返回给客户端
-     * 如果是quit，则关闭客户端连接*/
+     * 如果是quit，则关闭客户端连接
+     * */
     @Override
     public void messageReceived(IoSession session, Object message)
             throws Exception {
@@ -42,7 +41,7 @@ public class MinaServerHandler extends IoHandlerAdapter {
                 break;
         }
         //具体执行方法
-        adapter.execute();
+        adapter.execute(messageReceived);
     }
 
     @Override

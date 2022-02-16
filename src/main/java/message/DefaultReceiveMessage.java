@@ -34,7 +34,17 @@ public class DefaultReceiveMessage<String> extends ReceiveMessage<String>{
         }catch (Exception e){
             JLogger.error("DefaultReceiveMessage getRemain error", e);
         }
+    }
 
+    public String getFunName() {
+        return funName;
+    }
 
+    public JSONArray getFunParams() {
+        return funParams;
+    }
+
+    public IoSession getIosession(){
+        return ioSession;
     }
 }

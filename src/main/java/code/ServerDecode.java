@@ -1,6 +1,5 @@
 package code;
 
-import message.AbstractMessage;
 import message.MessageAdapter;
 import message.MessageAdapterImp;
 import message.ReceiveMessage;
@@ -14,7 +13,7 @@ public class ServerDecode extends CumulativeProtocolDecoder {
     /**
      * 解密
      */
-    private Decry decry;
+    private Decrypt decry;
 
     /**
      * 解压
@@ -53,7 +52,7 @@ public class ServerDecode extends CumulativeProtocolDecoder {
 
         //解密
         if(decry != null && decry.isDecry()){
-            bytes = decry.decry(bytes);
+            bytes = decry.decrypt(bytes);
         }
 
         //解压

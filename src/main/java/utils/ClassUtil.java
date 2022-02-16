@@ -11,6 +11,7 @@ import java.net.JarURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 
 import java.util.Set;
@@ -157,7 +158,8 @@ public class ClassUtil {
     }
 
 
-    public static ConcurrentHashMap<String, Method> getMethod(Set<Class<?>> aclass){
+    public static HashMap<String, Method> getMethod(Set<Class<?>> aclass){
+        HashMap<String, Method> result = new HashMap<>();
         for(Class<?> aclas : aclass){
             Method[] methods = aclas.getDeclaredMethods();
             for(int i = 0 ; i < methods.length; i++){
@@ -165,19 +167,11 @@ public class ClassUtil {
                 if(params.length > 3){
                     continue;
                 }
-
+                result.put(methods[i].getName(), methods[i]);
             }
         }
-
-
-        return null;
+        return result;
     }
 
-
-    public static void main(String[] args){
-        HandlerAdapter adapter = new ControllerHandler();
-        adapter.init("controller");
-
-    }
 
 }
