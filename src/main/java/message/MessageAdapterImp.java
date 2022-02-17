@@ -13,7 +13,7 @@ public class MessageAdapterImp<T> implements MessageAdapter{
         switch (opcodeEnum){
             case DefaultReceiveMessage:
                 return new DefaultReceiveMessage<>(index, opcode, ioSession, remain);
-            case UnknownReceiveMessage:
+            case UnknownMessage:
                 return new UnknownReceiveMessage<>(index, opcode, ioSession, remain);
         }
         return new UnknownReceiveMessage<>(index, opcode, ioSession, remain);

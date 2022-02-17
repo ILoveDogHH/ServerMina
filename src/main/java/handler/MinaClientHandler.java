@@ -26,7 +26,7 @@ public class MinaClientHandler extends IoHandlerAdapter {
     @Override
     public void messageReceived(IoSession session, Object message)
             throws Exception {
-        JLogger.debug("客户端接收到服务器消息");
+        JLogger.debug("客户端接收到服务器消息:{}",message.toString());
     }
 
     @Override

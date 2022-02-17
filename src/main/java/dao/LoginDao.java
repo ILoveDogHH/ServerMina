@@ -1,8 +1,6 @@
 package dao;
 
-public enum  LoginDao {
-    INSTANCE;
-
+public class  LoginDao {
 
 
 }

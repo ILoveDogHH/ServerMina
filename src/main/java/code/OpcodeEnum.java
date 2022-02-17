@@ -2,13 +2,16 @@ package code;
 
 public enum OpcodeEnum {
 
-    UnknownReceiveMessage(-1, "未知"),
+    UnknownMessage(-1,"未知"),
 
-    DefaultReceiveMessage(1001, "默认");
+    DefaultReceiveMessage(1001, "服务器接收客户端消息"),
 
-    int opcode;
+    DefaultSentseMessage(2001, "服务器响应客户端消息");
 
-    String msg;
+
+    public int opcode;
+
+    public String msg;
 
     OpcodeEnum(int opcode, String msg){
         this.opcode = opcode;
@@ -21,6 +24,6 @@ public enum OpcodeEnum {
                 return value;
             }
         }
-        return UnknownReceiveMessage;
+        return UnknownMessage;
     }
 }

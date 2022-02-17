@@ -21,12 +21,7 @@ public class ClientMina {
         //创建接受数据的过滤器
         DefaultIoFilterChainBuilder chain = connector.getFilterChain();
 
-//        //设定这个过滤器将一行一行(/r/n)的读取数据
-//        chain.addLast("myChin", new ProtocolCodecFilter(new TextLineCodecFactory()));
-
-
         connector.getFilterChain().addLast("codec", new ProtocolCodecFilter(new ServerEncode(), new ServerDecode()));
-
 
         //客户端的消息处理器：一个SamplMinaServerHander对象
         connector.setHandler(new MinaClientHandler());

@@ -44,10 +44,6 @@ public class ServerEncode extends ProtocolEncoderAdapter {
             bytes = encry.encrypt(bytes);
         }
         //获取到解密文件
-//        IoBuffer buf = IoBuffer.allocate(100);
-//        buf.setAutoExpand(true);
-//        buf.put(bytes);
-//        buf.flip();
         IoBuffer buf = IoBuffer.wrap(bytes);
         out.write(buf);
     }

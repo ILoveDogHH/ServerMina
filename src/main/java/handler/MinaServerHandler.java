@@ -1,7 +1,12 @@
 package handler;
 
 import code.OpcodeEnum;
+import com.alibaba.fastjson.JSONArray;
+import logger.JLogger;
 import message.AbstractMessage;
+import message.DefaultSendMessage;
+import message.MessageSend;
+import message.ReceiveMessage;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
 
@@ -11,7 +16,8 @@ public class MinaServerHandler extends IoHandlerAdapter {
     private static HandlerAdapter errorHandler;
 
     public MinaServerHandler(){
-        controllerHandler = new ControllerHandler("controller");
+        controllerHandler = new ControllerHandler("controller", int.class, JSONArray.class, IoSession.class);
+        errorHandler = new ErrorHandler(null);
     }
 
 
@@ -29,7 +35,7 @@ public class MinaServerHandler extends IoHandlerAdapter {
     @Override
     public void messageReceived(IoSession session, Object message)
             throws Exception {
-        AbstractMessage<?> messageReceived = (AbstractMessage<?>) message;
+        ReceiveMessage<?> messageReceived = (ReceiveMessage<?>) message;
         int opcode = messageReceived.getOpcode();
         HandlerAdapter adapter = null;
         OpcodeEnum opcodeEnum = OpcodeEnum.getEnum(opcode);
@@ -38,11 +44,35 @@ public class MinaServerHandler extends IoHandlerAdapter {
                 adapter = controllerHandler;
                 break;
             default:
+                adapter = errorHandler;
                 break;
         }
         //具体执行方法
-        adapter.execute(messageReceived);
+        JSONArray result = adapter.execute(messageReceived);
+        callbackResult(messageReceived, result);
     }
+
+    public void  callbackResult(ReceiveMessage<?> message, JSONArray result){
+        try {
+            int opcode = message.getOpcode();
+            AbstractMessage abstractMessage = null;
+            OpcodeEnum opcodeEnum = OpcodeEnum.getEnum(opcode);
+            switch (opcodeEnum){
+                case DefaultReceiveMessage:
+                    abstractMessage = new DefaultSendMessage(0, OpcodeEnum.DefaultSentseMessage.opcode, message.getUid(), result.toJSONString());
+                    break;
+                default:
+                    abstractMessage = new DefaultSendMessage(0, OpcodeEnum.UnknownMessage.opcode, message.getUid(), result.toJSONString());
+                    break;
+            }
+            message.getIoSession().write(abstractMessage);
+        }catch (Exception e){
+            JLogger.error("callbackResult error", e);
+        }
+
+
+    }
+
 
     @Override
     public void sessionClosed(IoSession session) throws Exception {

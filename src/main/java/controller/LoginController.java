@@ -16,4 +16,25 @@ public class LoginController {
         return CmdReturn.success("成功");
     }
 
+
+    public static JSONArray userLogin1(int uid, JSONArray params, IoSession ioSession){
+        System.out.println("方法请求成功");
+        return CmdReturn.success("成功");
+    }
+
+
+
+
+    public static JSONArray userLogin2(String uid, JSONArray params, IoSession ioSession){
+        System.out.println("方法请求成功");
+        return CmdReturn.success("成功");
+    }
+
+
+
+
+
+
+
+
 }

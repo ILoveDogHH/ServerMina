@@ -1,5 +1,8 @@
 package service;
 
-public enum  LoginService {
-    INSTANCE;
+public class  LoginService {
+
+
+
+
 }

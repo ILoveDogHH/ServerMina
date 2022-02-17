@@ -1,5 +1,6 @@
 package handler;
 
+import com.alibaba.fastjson.JSONArray;
 import message.AbstractMessage;
 import utils.ClassUtil;
 
@@ -10,15 +11,15 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class HandlerAdapter {
 
-    public static Set<Class<?>> classes;
+    public  Set<Class<?>> classes;
 
-    public static HashMap<String, Method> method;
+    public  HashMap<String, Method> method;
 
-    public HandlerAdapter(String pack){
+    public HandlerAdapter(String pack, Class<?>... params){
         classes = ClassUtil.getClasses(pack);
-        method = ClassUtil.getMethod(classes);
+        method = ClassUtil.getMethod(classes, params);
     }
 
 
-    abstract void  execute(AbstractMessage<?> messageReceived);
+    public abstract JSONArray execute(AbstractMessage<?> messageReceived);
 }

@@ -19,6 +19,7 @@ public abstract class ReceiveMessage<T> extends AbstractMessage<T> implements Me
         this.remain = ioBuffer;
     }
 
-
-
+    public IoSession getIoSession() {
+        return ioSession;
+    }
 }

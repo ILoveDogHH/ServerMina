@@ -2,6 +2,7 @@ package utils;
 
 import handler.ControllerHandler;
 import handler.HandlerAdapter;
+import logger.JLogger;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -28,7 +29,9 @@ public class ClassUtil {
      * @return
      */
     public static Set<Class<?>> getClasses(String pack) {
-
+        if(pack == null){
+            return null;
+        }
         // 第一个class类的集合
         Set<Class<?>> classes = new LinkedHashSet<Class<?>>();
         // 是否循环迭代
@@ -158,16 +161,31 @@ public class ClassUtil {
     }
 
 
-    public static HashMap<String, Method> getMethod(Set<Class<?>> aclass){
+    public static HashMap<String, Method> getMethod(Set<Class<?>> aclass, Class<?>... params){
+        if(aclass == null){
+            return null;
+        }
         HashMap<String, Method> result = new HashMap<>();
         for(Class<?> aclas : aclass){
             Method[] methods = aclas.getDeclaredMethods();
             for(int i = 0 ; i < methods.length; i++){
-                Class<?>[] params = methods[i].getParameterTypes();
-                if(params.length > 3){
+                Class<?>[] mehthParams = methods[i].getParameterTypes();
+                //区分下方法参数是否符合要求
+                if(params.length != mehthParams.length){
                     continue;
                 }
-                result.put(methods[i].getName(), methods[i]);
+                boolean isAble = true;
+                for(int length = 0 ; length < params.length; length++) {
+                    if (!params[length].isAssignableFrom(mehthParams[length])){
+                        isAble = false;
+                        break;
+                    }
+                }
+                if(isAble){
+                    result.put(methods[i].getName(), methods[i]);
+                    JLogger.debug(String.format("function %s load", methods[i].getName()));
+                }
+
             }
         }
         return result;

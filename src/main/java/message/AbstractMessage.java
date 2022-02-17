@@ -1,6 +1,6 @@
 package message;
 
-public abstract class AbstractMessage<T> implements Message {
+public abstract class  AbstractMessage<T> implements Message {
 
     int index;
 
