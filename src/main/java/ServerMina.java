@@ -1,11 +1,13 @@
 
+import alive.KeepAliveImp;
 import code.ServerDecode;
 import code.ServerEncode;
-import handler.MinaServerHandler;
+import handler.MinaHandler;
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.executor.ExecutorFilter;
+import org.apache.mina.filter.keepalive.KeepAliveFilter;
 import org.apache.mina.filter.logging.LoggingFilter;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 
@@ -39,8 +41,10 @@ public class ServerMina {
 //        //启动默认线程池
        acceptor.getFilterChain().addLast("executor", new ExecutorFilter());
 
+       KeepAliveFilter aliveFilter = KeepAliveImp.getKeepAliveFilter();
+       acceptor.getFilterChain().addLast("alive", aliveFilter);
         // 设置消息处理类（创建、关闭Session，可读可写等等，继承自接口IoHandler）
-        acceptor.setHandler(new MinaServerHandler());
+        acceptor.setHandler(new MinaHandler());
         // 设置接收缓存区大小
         acceptor.getSessionConfig().setReadBufferSize(2048);
         acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 10);
@@ -52,5 +56,9 @@ public class ServerMina {
             e.printStackTrace();
         }
     }
+
+
+
+
 
 }

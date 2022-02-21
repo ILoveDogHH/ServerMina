@@ -32,7 +32,7 @@ public class DefaultReceiveMessage<String> extends ReceiveMessage<String>{
             funName = (String) array.getString(0);
             funParams = array.getJSONArray(1);
         }catch (Exception e){
-            JLogger.error("DefaultReceiveMessage getRemain error", e);
+             JLogger.error("DefaultReceiveMessage getRemain error", e);
         }
     }
 

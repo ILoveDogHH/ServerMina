@@ -3,6 +3,7 @@ import code.ServerDecode;
 import code.ServerEncode;
 import com.alibaba.fastjson.JSONArray;
 import handler.MinaClientHandler;
+import handler.MinaHandler;
 import message.DefaultSendMessage;
 import org.apache.mina.core.filterchain.DefaultIoFilterChainBuilder;
 import org.apache.mina.core.future.ConnectFuture;
@@ -26,8 +27,7 @@ public class ClientMina {
         //客户端的消息处理器：一个SamplMinaServerHander对象
         connector.setHandler(new MinaClientHandler());
 
-        //set connect timeout
-        connector.setConnectTimeout(30);
+
 
         //连接到服务器：
         ConnectFuture cf = connector.connect(new InetSocketAddress("localhost",8888));

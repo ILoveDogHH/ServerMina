@@ -10,14 +10,13 @@ import message.ReceiveMessage;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
 
-public class MinaServerHandler extends IoHandlerAdapter {
+public class MinaHandler extends IoHandlerAdapter {
 
     private static HandlerAdapter controllerHandler;
     private static HandlerAdapter errorHandler;
 
-    public MinaServerHandler(){
+    public MinaHandler(){
         controllerHandler = new ControllerHandler("controller", int.class, JSONArray.class, IoSession.class);
-        errorHandler = new ErrorHandler(null);
     }
 
 
@@ -52,14 +51,14 @@ public class MinaServerHandler extends IoHandlerAdapter {
         callbackResult(messageReceived, result);
     }
 
-    public void  callbackResult(ReceiveMessage<?> message, JSONArray result){
+    public void callbackResult(ReceiveMessage<?> message, JSONArray result){
         try {
             int opcode = message.getOpcode();
             AbstractMessage abstractMessage = null;
             OpcodeEnum opcodeEnum = OpcodeEnum.getEnum(opcode);
             switch (opcodeEnum){
                 case DefaultReceiveMessage:
-                    abstractMessage = new DefaultSendMessage(0, OpcodeEnum.DefaultSentseMessage.opcode, message.getUid(), result.toJSONString());
+                    abstractMessage = new DefaultSendMessage(0, OpcodeEnum.DefaultSendMessage.opcode, message.getUid(), result.toJSONString());
                     break;
                 default:
                     abstractMessage = new DefaultSendMessage(0, OpcodeEnum.UnknownMessage.opcode, message.getUid(), result.toJSONString());
@@ -69,8 +68,6 @@ public class MinaServerHandler extends IoHandlerAdapter {
         }catch (Exception e){
             JLogger.error("callbackResult error", e);
         }
-
-
     }
 
 
