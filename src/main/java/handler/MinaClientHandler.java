@@ -3,9 +3,7 @@ package handler;
 import code.OpcodeEnum;
 import com.alibaba.fastjson.JSONArray;
 import logger.JLogger;
-import message.AbstractMessage;
-import message.DefaultSendMessage;
-import message.ReceiveMessage;
+import message.*;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
 
@@ -59,7 +57,7 @@ public class MinaClientHandler extends IoHandlerAdapter {
             OpcodeEnum opcodeEnum = OpcodeEnum.getEnum(opcode);
             switch (opcodeEnum){
                 case KeepSendMessage:
-                    abstractMessage = new DefaultSendMessage(0, OpcodeEnum.KeepReceiveMessage.opcode, message.getUid(), result.toJSONString());
+                    abstractMessage = new HeartSendMessage(0, OpcodeEnum.KeepReceiveMessage.opcode);
                     break;
                 default:
                     abstractMessage = new DefaultSendMessage(0, OpcodeEnum.UnknownMessage.opcode, message.getUid(), result.toJSONString());

@@ -24,6 +24,8 @@ public class ClientMina {
 
         connector.getFilterChain().addLast("codec", new ProtocolCodecFilter(new ServerEncode(), new ServerDecode()));
 
+        connector.setConnectTimeoutMillis(10000);
+
         //客户端的消息处理器：一个SamplMinaServerHander对象
         connector.setHandler(new MinaClientHandler());
 
@@ -32,16 +34,19 @@ public class ClientMina {
         //连接到服务器：
         ConnectFuture cf = connector.connect(new InetSocketAddress("localhost",8888));
 
-        //Wait for the connection attempt to be finished.
-        cf.awaitUninterruptibly();
-        JSONArray result = new JSONArray();
-        JSONArray params = new JSONArray();
-        params.add(51301536);
-        result.add("userLogin");
-        result.add(params);
-        cf.getSession().write(new DefaultSendMessage(1,1001,1,result.toJSONString()));
-        cf.getSession().getCloseFuture().awaitUninterruptibly();
-        connector.dispose();
+
+//        //Wait for the connection attempt to be finished.
+//        cf.awaitUninterruptibly();
+//        JSONArray result = new JSONArray();
+//        JSONArray params = new JSONArray();
+//        params.add(51301536);
+//        result.add("userLogin");
+//        result.add(params);
+//       // cf.getSession().write(new DefaultSendMessage(1,1001,1,result.toJSONString()));
+//        cf.getSession().getCloseFuture().awaitUninterruptibly();
+//        connector.dispose();
+
+        System.out.println("启动成功");
     }
 
 

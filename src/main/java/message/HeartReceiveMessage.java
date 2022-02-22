@@ -10,8 +10,8 @@ import java.nio.charset.CharacterCodingException;
  * @param <T>
  */
 public class HeartReceiveMessage<T> extends  ReceiveMessage<T>{
-    public HeartReceiveMessage(int index, int opcode, IoSession ioSession, IoBuffer ioBuffer) {
-        super(index, opcode, ioSession, ioBuffer);
+    public HeartReceiveMessage(int index, int opcode, IoSession ioSession) {
+        super(index, opcode,ioSession, null);
     }
 
     @Override
