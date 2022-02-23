@@ -7,7 +7,7 @@ import org.apache.mina.core.session.IoSession;
  * 接收数据进行请求
  * @param <T>
  */
-public abstract class ReceiveMessage<T> extends AbstractMessage<T> implements MessageReceive{
+public abstract class ReceiveMessage<T> extends AbstractMessage<T> implements MessageReceive<T> {
     //玩家的session信息
     IoSession ioSession;
     //io剩余信息

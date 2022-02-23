@@ -8,8 +8,8 @@ import java.nio.charset.Charset;
 /**
  * 默认发送消息
  */
-public class DefaultSendMessage<T> extends SendMessage<String>{
-    public DefaultSendMessage(int index, int opcode, int uid, String data) {
+public class SendMessageImp<T> extends SendMessage<String>{
+    public SendMessageImp(int index, int opcode, int uid, String data) {
         super(index, opcode);
         this.uid = uid;
         this.data = data;

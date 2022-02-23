@@ -4,18 +4,17 @@ import code.OpcodeEnum;
 import com.alibaba.fastjson.JSONArray;
 import logger.JLogger;
 import message.AbstractMessage;
-import message.DefaultSendMessage;
-import message.MessageSend;
+import message.SendMessageImp;
 import message.ReceiveMessage;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
 
-public class MinaHandler extends IoHandlerAdapter {
+public class MinaServerHandler extends IoHandlerAdapter {
 
     private static HandlerAdapter controllerHandler;
     private static HandlerAdapter errorHandler;
 
-    public MinaHandler(){
+    public MinaServerHandler(){
         controllerHandler = new ControllerHandler("controller", int.class, JSONArray.class, IoSession.class);
     }
 
@@ -39,7 +38,7 @@ public class MinaHandler extends IoHandlerAdapter {
         HandlerAdapter adapter = null;
         OpcodeEnum opcodeEnum = OpcodeEnum.getEnum(opcode);
         switch (opcodeEnum){
-            case DefaultReceiveMessage:
+            case ReceiveMessage:
                 adapter = controllerHandler;
                 break;
             default:
@@ -57,11 +56,11 @@ public class MinaHandler extends IoHandlerAdapter {
             AbstractMessage abstractMessage = null;
             OpcodeEnum opcodeEnum = OpcodeEnum.getEnum(opcode);
             switch (opcodeEnum){
-                case DefaultReceiveMessage:
-                    abstractMessage = new DefaultSendMessage(0, OpcodeEnum.DefaultSendMessage.opcode, message.getUid(), result.toJSONString());
+                case ReceiveMessage:
+                    abstractMessage = new SendMessageImp(0, OpcodeEnum.ResponseMessage.opcode, message.getUid(), result.toJSONString());
                     break;
                 default:
-                    abstractMessage = new DefaultSendMessage(0, OpcodeEnum.UnknownMessage.opcode, message.getUid(), result.toJSONString());
+                    abstractMessage = new SendMessageImp(0, OpcodeEnum.UnknownMessage.opcode, message.getUid(), result.toJSONString());
                     break;
             }
             message.getIoSession().write(abstractMessage);

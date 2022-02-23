@@ -38,7 +38,8 @@ public class MinaClientHandler extends IoHandlerAdapter {
         HandlerAdapter adapter = null;
         OpcodeEnum opcodeEnum = OpcodeEnum.getEnum(opcode);
         switch (opcodeEnum){
-            case KeepSendMessage:
+            //服务器
+            case HeartReceiveMessage:
                 adapter = HeartHandler;
                 break;
             default:
@@ -56,14 +57,15 @@ public class MinaClientHandler extends IoHandlerAdapter {
             AbstractMessage abstractMessage = null;
             OpcodeEnum opcodeEnum = OpcodeEnum.getEnum(opcode);
             switch (opcodeEnum){
-                case KeepSendMessage:
-                    abstractMessage = new HeartSendMessage(0, OpcodeEnum.KeepReceiveMessage.opcode);
+                //心跳检测返回
+                case HeartReceiveMessage:
+                    abstractMessage = new HeartSendMessage(0, OpcodeEnum.HeartSendMessage.opcode);
+                    message.getIoSession().write(abstractMessage);
                     break;
                 default:
-                    abstractMessage = new DefaultSendMessage(0, OpcodeEnum.UnknownMessage.opcode, message.getUid(), result.toJSONString());
+                    abstractMessage = new SendMessageImp(0, OpcodeEnum.UnknownMessage.opcode, message.getUid(), result.toJSONString());
                     break;
             }
-            message.getIoSession().write(abstractMessage);
         }catch (Exception e){
             JLogger.error("callbackResult error", e);
         }

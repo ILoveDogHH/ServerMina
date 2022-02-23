@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import exception.DefaultException;
 import logger.JLogger;
 import message.AbstractMessage;
-import message.DefaultReceiveMessage;
+import message.ReceiveMessageImp;
 
 import java.lang.reflect.Method;
 
@@ -20,7 +20,7 @@ public class ControllerHandler extends HandlerAdapter{
     public JSONArray execute(AbstractMessage<?> messageReceived) {
         String errorMsg = "";
         try {
-            DefaultReceiveMessage<String> receiveMessage = (DefaultReceiveMessage<String>) messageReceived;
+            ReceiveMessageImp<String> receiveMessage = (ReceiveMessageImp<String>) messageReceived;
             int uid = receiveMessage.getUid();
             String funName = receiveMessage.getFunName();
             try {

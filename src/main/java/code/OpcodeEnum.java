@@ -4,13 +4,15 @@ public enum OpcodeEnum {
 
     UnknownMessage(-1,"未知"),
 
-    KeepSendMessage(1, "服务器发送心跳检测信息"),
+    HeartSendMessage(1, "心跳检测发送消息"),
 
-    KeepReceiveMessage(2, "服务器接受心跳检测信息"),
+    HeartReceiveMessage(2, "心跳检测接受消息"),
 
-    DefaultReceiveMessage(1001, "服务器接收客户端消息"),
+    ReceiveMessage(1001, "接受消息"),
 
-    DefaultSendMessage(2001, "服务器响应客户端消息");
+    SendMessage(2001, "发送消息"),
+
+    ResponseMessage(3001, "响应消息");
 
 
     public int opcode;

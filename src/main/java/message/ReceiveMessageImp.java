@@ -11,14 +11,14 @@ import java.nio.charset.Charset;
 /**
  * 默认
  */
-public class DefaultReceiveMessage<String> extends ReceiveMessage<String>{
+public class ReceiveMessageImp<String> extends ReceiveMessage<String>{
     //方法名字
     String funName;
     //方法参数
     JSONArray funParams;
 
 
-    public DefaultReceiveMessage(int index, int opcode, IoSession ioSession, IoBuffer ioBuffer) {
+    public ReceiveMessageImp(int index, int opcode, IoSession ioSession, IoBuffer ioBuffer) {
         super(index, opcode, ioSession, ioBuffer);
     }
 

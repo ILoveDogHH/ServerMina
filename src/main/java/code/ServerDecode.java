@@ -1,8 +1,6 @@
 package code;
 
-import message.MessageAdapter;
-import message.MessageAdapterImp;
-import message.ReceiveMessage;
+import message.*;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.CumulativeProtocolDecoder;
@@ -62,7 +60,7 @@ public class ServerDecode extends CumulativeProtocolDecoder {
 
         IoBuffer buffer = IoBuffer.wrap(bytes);
         //通过opcode获取到解码器
-        ReceiveMessage<?> messageReceive = adapter.getMessage(session, buffer);
+        MessageReceive<?> messageReceive = adapter.getMessage(session, buffer);
         messageReceive.getRemain();
         out.write(messageReceive);
         return true;
