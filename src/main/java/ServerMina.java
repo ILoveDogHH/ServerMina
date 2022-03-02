@@ -41,7 +41,7 @@ public class ServerMina {
 //        //启动默认线程池
        acceptor.getFilterChain().addLast("executor", new ExecutorFilter());
 
-       acceptor.getFilterChain().addLast("alive", KeepAliveImp.getKeepAliveFilter(5, 30));
+       acceptor.getFilterChain().addLast("alive", KeepAliveImp.getKeepAliveFilter(60, 30));
         // 设置消息处理类（创建、关闭Session，可读可写等等，继承自接口IoHandler）
         acceptor.setHandler(new MinaServerHandler());
         // 设置接收缓存区大小
