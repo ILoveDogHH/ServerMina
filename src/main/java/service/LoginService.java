@@ -1,8 +1,6 @@
 package service;
 
-public class  LoginService {
-
-
+public interface  LoginService {
 
 
 }

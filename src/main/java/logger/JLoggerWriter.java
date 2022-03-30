@@ -77,7 +77,7 @@ public enum JLoggerWriter {
 
 
 	/**
-	 * 写游戏日志
+	 * 写日志
 	 * 
 	 * @param file
 	 *            文件的路径
@@ -91,7 +91,7 @@ public enum JLoggerWriter {
 	}
 
 	/**
-	 * 写游戏日志
+	 * 写日志
 	 * 
 	 * @param file
 	 *            文件的路径
