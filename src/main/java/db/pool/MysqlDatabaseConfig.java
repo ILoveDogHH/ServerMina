@@ -5,7 +5,7 @@ import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
 public class MysqlDatabaseConfig {
 
-    private String url = "jdbc:mysql://%s:%d/myDB?user=%s&password=%s&useUnicode=true&characterEncoding=8859_1&useSSL=false";
+    private String url = "jdbc:mysql://%s:%d/%s?user=%s&password=%s&useUnicode=true&characterEncoding=UTF-8&useSSL=false";
 
     private String ip;
 
