@@ -1,7 +1,9 @@
 package db.pool;
 
+import logger.JLogger;
 import lombok.SneakyThrows;
 import org.apache.commons.pool2.BasePooledObjectFactory;
+import org.apache.commons.pool2.ObjectPool;
 import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.impl.DefaultPooledObject;
 
@@ -24,22 +26,10 @@ public class MysqlConnectObjectPoolFactory extends BasePooledObjectFactory<Conne
         return DriverManager.getConnection(url);
     }
 
-    @SneakyThrows
     @Override
     public PooledObject<Connection> wrap(Connection connection) {
-        Connection con = DriverManager.getConnection(url);
-        return new DefaultPooledObject<>(con);
+        return new DefaultPooledObject<>(connection);
     }
-
-
-
-
-    public void destroyObject(PooledObject<Connection> p) throws Exception {
-        p.getObject().close();
-    }
-
-
-
 
 
 }

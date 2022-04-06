@@ -2,6 +2,7 @@ package db;
 
 import db.pool.MysqlDatabase;
 import db.pool.MysqlDatabaseConfig;
+import lombok.SneakyThrows;
 import vo.CfgAct112;
 
 import java.util.List;
@@ -18,7 +19,5 @@ public class test {
         MysqlDatabaseConfig config = new MysqlDatabaseConfig(ip, port, dbName, user, password);
         MysqlDatabase db = new MysqlDatabase(config);
         String sql = "select * from cfg_act112 where mainlv = ?";
-        CfgAct112 c = (CfgAct112) db.getData(CfgAct112.class, sql, 1);
-        List<CfgAct112> c2 = db.getListData(CfgAct112.class, sql);
     }
 }

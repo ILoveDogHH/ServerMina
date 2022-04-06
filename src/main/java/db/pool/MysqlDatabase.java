@@ -2,6 +2,7 @@ package db.pool;
 
 import db.DBInference;
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.pool2.ObjectPool;
 import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class MysqlDatabase<T> implements DBInference<T> {
 
-    private PooledObject<Connection> pooledObject;
+    private ObjectPool<Connection> poolObject;
 
 
     public MysqlDatabase(MysqlDatabaseConfig mysqlConfig) throws Exception {
@@ -23,7 +24,7 @@ public class MysqlDatabase<T> implements DBInference<T> {
         String url = mysqlConfig.getDBUrl();
         MysqlConnectObjectPoolFactory mysqlConnectObjectPoolFactory = new MysqlConnectObjectPoolFactory(url);
         GenericObjectPool<Connection> genericObjectPool = new GenericObjectPool<>(mysqlConnectObjectPoolFactory, mysqlConfig.getPoolConfig());
-        pooledObject = genericObjectPool.getFactory().makeObject();
+        poolObject = genericObjectPool;
     }
 
 
@@ -47,7 +48,7 @@ public class MysqlDatabase<T> implements DBInference<T> {
     }
 
 
-    public static void close(Connection conn, Statement stat, ResultSet rs) {
+    public void close(Connection conn, Statement stat, ResultSet rs) {
         if (rs != null) {
             try {
                 rs.close();
@@ -64,8 +65,8 @@ public class MysqlDatabase<T> implements DBInference<T> {
         }
         if (conn != null) {
             try {
-                conn.close();
-            } catch (SQLException e) {
+                poolObject.returnObject(conn);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -76,7 +77,7 @@ public class MysqlDatabase<T> implements DBInference<T> {
         PreparedStatement prestat = null;
         int count = 0;
         try {
-            conn = pooledObject.getObject();
+            conn = poolObject.borrowObject();
             prestat = conn.prepareStatement(sql);
         }catch (Exception e){
             throw new SQLException("pooledObject connect error" + e.getMessage());
@@ -99,7 +100,7 @@ public class MysqlDatabase<T> implements DBInference<T> {
         ResultSet rs = null;
         T entity = null;
         try {
-            conn = pooledObject.getObject();
+            conn = poolObject.borrowObject();
             prestat = conn.prepareStatement(sql);
             insteadHolder(prestat, args);
             rs = prestat.executeQuery();
@@ -122,7 +123,7 @@ public class MysqlDatabase<T> implements DBInference<T> {
         T entity = null;
         List<T> list = new ArrayList<T>();
         try {
-            conn = pooledObject.getObject();
+            conn = poolObject.borrowObject();
             prestat = conn.prepareStatement(sql);
             insteadHolder(prestat, args);
             rs = prestat.executeQuery();
@@ -137,9 +138,6 @@ public class MysqlDatabase<T> implements DBInference<T> {
         }
         return list;
     }
-
-
-
 
 
 
