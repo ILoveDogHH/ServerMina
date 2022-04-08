@@ -7,8 +7,8 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigCenter {
-
-    private final static String CONFIG = "config/jdbc.properties";
+    private final static String SYSTEM_PATH = System.getProperty("user.dir");
+    private final static String CONFIG = SYSTEM_PATH + "/config/jdbc.properties";
     private static Properties config;
 
 

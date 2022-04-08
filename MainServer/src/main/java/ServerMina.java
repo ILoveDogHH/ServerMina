@@ -3,6 +3,7 @@ import alive.KeepAliveImp;
 import code.ServerDecode;
 import code.ServerEncode;
 import handler.MinaServerHandler;
+import logger.JLogger;
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
@@ -31,10 +32,11 @@ public class ServerMina {
      */
     public static void main(String[] args) throws IOException {
         //加载配置文件
-        ConfigCenter.reloadConfig();
-        System.out.println("加载配置文件成功");
+//        ConfigCenter.reloadConfig();
+//        System.out.println("加载配置文件成功");
 
         createSocket();
+        JLogger.debug("服务器启动成功");
         System.out.println("success");
 
     }
