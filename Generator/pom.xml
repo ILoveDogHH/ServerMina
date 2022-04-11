@@ -12,4 +12,14 @@
     <artifactId>Generator</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+
+
+    </dependencies>
+
 </project>
