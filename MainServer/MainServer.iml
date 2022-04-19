@@ -16,18 +16,17 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="ServerUtils" />
+    <orderEntry type="library" name="Maven: org.example:ServerUtils:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.17.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-core:2.17.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.6.1" level="project" />
-    <orderEntry type="module" module-name="ServerConnect" />
+    <orderEntry type="library" name="Maven: org.example:ServerConnect:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.mina:mina-core:2.0.7" level="project" />
     <orderEntry type="library" name="Maven: org.xerial.snappy:snappy-java:1.1.2.6" level="project" />
-    <orderEntry type="module" module-name="MysqlConnect" />
+    <orderEntry type="library" name="Maven: org.example:MysqlConnect:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.47" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-pool2:2.4.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.4" level="project" />
-    <orderEntry type="library" name="Maven: com.jayqqaa12:jbase-cache:0.9.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:1.5.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:1.5.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:4.3.11.RELEASE" level="project" />
@@ -52,5 +51,11 @@
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.2" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.47" level="project" />
+    <orderEntry type="module" module-name="ServerUtils" />
+    <orderEntry type="module" module-name="ServerConnect" />
+    <orderEntry type="module" module-name="MysqlConnect" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.6.6" level="project" />
+    <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.8.3" level="project" />
+    <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.1.1" level="project" />
   </component>
 </module>

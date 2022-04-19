@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>ServerMina</artifactId>
+    <artifactId>PartentServer</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <build>
@@ -27,6 +27,7 @@
         <module>MainServer</module>
         <module>ServerConnect</module>
         <module>generator</module>
+        <module>Cache</module>
     </modules>
 
 

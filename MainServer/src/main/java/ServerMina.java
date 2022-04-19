@@ -28,9 +28,7 @@ public class ServerMina {
     /**
      *
      */
-    public ServerMina() {
-        // TODO Auto-generated constructor stub
-    }
+
 
     /**
      * @param args
