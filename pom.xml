@@ -26,15 +26,16 @@
         <module>MysqlConnect</module>
         <module>MainServer</module>
         <module>ServerConnect</module>
+        <module>generator</module>
     </modules>
 
 
     <properties>
-        <verion-JLogger>1.1.0</verion-JLogger>
+        <verion-ServerUtils>1.1.0</verion-ServerUtils>
         <version-Generator>1.1.0</version-Generator>
-        <version-MainServer>1.1.0</version-MainServer>
         <version-MysqlConnect>1.1.0</version-MysqlConnect>
         <verion-ServerConnect>1.1.0</verion-ServerConnect>
+        <version-MainServer>1.1.0</version-MainServer>
     </properties>
 
 
@@ -55,9 +56,17 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
+        </dependency>
 
-
-
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
     </dependencies>
 
 </project>

@@ -2,7 +2,11 @@
 import alive.KeepAliveImp;
 import code.ServerDecode;
 import code.ServerEncode;
+import dao.UserDao;
+import entity.CfgAct112;
 import handler.MinaServerHandler;
+import logger.JLogger;
+import manager.DatabaseManager;
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
@@ -13,6 +17,8 @@ import utils.ConfigCenter;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.sql.SQLException;
+import java.util.List;
 
 public class ServerMina {
 
@@ -29,14 +35,28 @@ public class ServerMina {
     /**
      * @param args
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         //加载配置文件
         ConfigCenter.reloadConfig();
         System.out.println("加载配置文件成功");
 
+        //注册数据库
+        DatabaseManager.register();
+
         createSocket();
+        JLogger.debug("服务器启动成功");
         System.out.println("success");
 
+        test();
+    }
+
+
+    private static void test() throws SQLException {
+        List<CfgAct112> data = UserDao.getInstance().getListData(CfgAct112.class, "select * from cfg_act112");
+        System.out.println(data.toString());
+
+        String sql = "insert into cfg_act112(mainLv, items) values(?,?)";
+        UserDao.getInstance().update(sql, 10, "123");
     }
 
 

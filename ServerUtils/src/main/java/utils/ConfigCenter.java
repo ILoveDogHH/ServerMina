@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigCenter {
-
     private final static String CONFIG = "config/jdbc.properties";
     private static Properties config;
 
@@ -23,6 +22,10 @@ public class ConfigCenter {
 
     public static String getConfig(String key){
         return config.getProperty(key);
+    }
+
+    public static int getIntConfig(String key){
+        return Integer.parseInt(config.getProperty(key, "0"));
     }
 
 

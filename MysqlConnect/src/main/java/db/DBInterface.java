@@ -3,7 +3,7 @@ package db;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface DBInference<T>{
+public interface DBInterface<T>{
 
 
     int update(String sql, Object... args) throws SQLException;

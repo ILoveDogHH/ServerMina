@@ -104,7 +104,7 @@ public class LoggerUtils {
      *            文件前缀, 使用log4j2的xml配置规则
      * @param fileNameSuffix
      *            文件后缀, 使用log4j2的xml配置规则
-     * @param cronExpression
+     * @param
      *            cron表达式
      *            https://docs.oracle.com/cd/E12058_01/doc/doc.1014/e12030/cron_expressions.htm
      * @param pattern

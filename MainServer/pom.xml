@@ -16,14 +16,21 @@
 
         <dependency>
             <groupId>org.example</groupId>
-            <artifactId>JLogger</artifactId>
-            <version>${verion-JLogger}</version>
+            <artifactId>ServerUtils</artifactId>
+            <version>${verion-ServerUtils}</version>
         </dependency>
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>ServerConnect</artifactId>
             <version>${verion-ServerConnect}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>MysqlConnect</artifactId>
+            <version>${version-MysqlConnect}</version>
+        </dependency>
+
     </dependencies>
 
 

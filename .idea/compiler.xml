@@ -8,14 +8,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="MainServer" />
+        <module name="generator" />
         <module name="ServerConnect" />
         <module name="ServerUtils" />
         <module name="MysqlConnect" />
-        <module name="Generator" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Generator" target="8" />
+      <module name="generator" target="8" />
       <module name="MainServer" target="8" />
       <module name="MysqlConnect" target="8" />
       <module name="PartentServer" target="8" />
