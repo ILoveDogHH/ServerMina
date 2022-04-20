@@ -1,4 +1,5 @@
 db\pool\MysqlConnectObjectPoolFactory.class
 db\pool\MysqlDatabase.class
+db\DBbase.class
 db\pool\MysqlDatabaseConfig.class
-db\DBInference.class
+db\DBInterface.class

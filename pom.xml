@@ -26,16 +26,17 @@
         <module>MysqlConnect</module>
         <module>MainServer</module>
         <module>ServerConnect</module>
-        <module>generator</module>
         <module>Cache</module>
     </modules>
 
 
     <properties>
+        <version-generator>1.1.0</version-generator>
+        <version-Cache>1.1.0</version-Cache>
         <verion-ServerUtils>1.1.0</verion-ServerUtils>
         <version-Generator>1.1.0</version-Generator>
         <version-MysqlConnect>1.1.0</version-MysqlConnect>
-        <verion-ServerConnect>1.1.0</verion-ServerConnect>
+        <verion-ServerConnect>1.2.0</verion-ServerConnect>
         <version-MainServer>1.1.0</version-MainServer>
     </properties>
 
@@ -49,12 +50,6 @@
             <scope>provided</scope>
         </dependency>
 
-
-        <dependency>
-            <groupId>com.jayqqaa12</groupId>
-            <artifactId>jbase-cache</artifactId>
-            <version>0.9.0</version>
-        </dependency>
 
 
         <dependency>

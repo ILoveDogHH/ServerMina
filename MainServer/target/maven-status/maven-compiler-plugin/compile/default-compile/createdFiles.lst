@@ -1,0 +1,5 @@
+ServerMina.class
+dao\UserDao.class
+manager\DatabaseManager.class
+ClientMina.class
+entity\CfgAct112.class
