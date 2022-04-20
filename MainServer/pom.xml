@@ -30,6 +30,12 @@
             <artifactId>MysqlConnect</artifactId>
             <version>${version-MysqlConnect}</version>
         </dependency>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>Cache</artifactId>
+            <version>1.1.0</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 

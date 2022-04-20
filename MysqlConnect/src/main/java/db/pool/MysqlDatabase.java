@@ -1,6 +1,7 @@
 package db.pool;
 
 import db.DBInterface;
+import db.DataBase;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.pool2.ObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPool;
@@ -10,7 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MysqlDatabase {
+public class MysqlDatabase implements DataBase {
 
     private ObjectPool<Connection> poolObject;
 

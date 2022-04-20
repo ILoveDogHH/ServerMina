@@ -53,8 +53,6 @@ public class ServerMina {
         List<CfgAct112> data = UserDao.getInstance().getListData(CfgAct112.class, "select * from cfg_act112");
         System.out.println(data.toString());
 
-        String sql = "insert into cfg_act112(mainLv, items) values(?,?)";
-        UserDao.getInstance().update(sql, 10, "123");
     }
 
 

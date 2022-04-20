@@ -8,12 +8,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class DBbase<T> implements DBInterface<T>{
+public class DBbase<T> implements DBInterface<T>{
 
-    MysqlDatabase db;
+    DataBase db;
 
-
-    public DBbase(MysqlDatabase db){
+    public DBbase(DataBase db){
         this.db = db;
     }
 
