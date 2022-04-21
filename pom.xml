@@ -38,6 +38,18 @@
         <version-MysqlConnect>1.1.0</version-MysqlConnect>
         <verion-ServerConnect>1.2.0</verion-ServerConnect>
         <version-MainServer>1.1.0</version-MainServer>
+
+
+
+        <version.plugin.org.apache.maven.plugins.maven-antrun-plugin>1.8</version.plugin.org.apache.maven.plugins.maven-antrun-plugin>
+        <version.plugin.org.apache.maven.plugins.maven-compiler-plugin>3.7.0</version.plugin.org.apache.maven.plugins.maven-compiler-plugin>
+        <version.plugin.org.apache.maven.plugins.maven-assembly-plugin>3.0.0</version.plugin.org.apache.maven.plugins.maven-assembly-plugin>
+        <version.plugin.org.apache.maven.plugins.maven-resources-plugin>3.0.2</version.plugin.org.apache.maven.plugins.maven-resources-plugin>
+        <version.plugin.org.apache.maven.plugins.maven-surefire-plugin>2.20.1</version.plugin.org.apache.maven.plugins.maven-surefire-plugin>
+        <version.plugin.org.apache.maven.plugins.maven-dependency-plugin>2.8</version.plugin.org.apache.maven.plugins.maven-dependency-plugin>
+        <version.plugin.org.apache.maven.plugins.maven-jar-plugin>2.4</version.plugin.org.apache.maven.plugins.maven-jar-plugin>
+        <version.plugin.org.apache.maven.plugins.maven-source-plugin>3.0.1</version.plugin.org.apache.maven.plugins.maven-source-plugin>
+        <version.plugin.org.codehaus.mojo.build-helper-maven-plugin>3.0.0</version.plugin.org.codehaus.mojo.build-helper-maven-plugin>
     </properties>
 
 
@@ -64,5 +76,7 @@
             <version>1.2.47</version>
         </dependency>
     </dependencies>
+
+
 
 </project>

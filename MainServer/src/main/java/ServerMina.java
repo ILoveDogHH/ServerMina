@@ -1,3 +1,4 @@
+package main.java;
 
 import alive.KeepAliveImp;
 import code.ServerDecode;

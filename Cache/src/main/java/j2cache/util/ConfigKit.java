@@ -1,11 +1,11 @@
 package j2cache.util;
 
+import j2cache.CacheConstans;
 import j2cache.J2Cache;
 
 import java.io.InputStream;
 import java.util.Properties;
 
-import static com.jayqqaa12.j2cache.CacheConstans.CONFIG_FILE;
 
 /**
  * Created by 12 on 2018/1/15.
@@ -14,7 +14,7 @@ public class ConfigKit {
 //    private static final Logger LOG = LoggerFactory.getLogger(ConfigKit.class);
 
     private static Properties props;
-
+    private static String CONFIG_FILE =CacheConstans.CONFIG_FILE;
 
     /**
      * @param props

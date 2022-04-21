@@ -1,5 +1,9 @@
-ServerMina.class
-dao\UserDao.class
+cache\CacheUtils.class
 manager\DatabaseManager.class
+cache\CacheKey.class
+cache\ICacheData.class
+dao\UserDao.class
+main\java\ServerMina.class
 ClientMina.class
 entity\CfgAct112.class
+cache\CacheData.class

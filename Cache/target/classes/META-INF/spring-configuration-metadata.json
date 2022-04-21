@@ -1,0 +1,22 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "j2cache.spring.boot.config.SpringBootRedisConfig",
+      "name": "spring.redis",
+      "type": "j2cache.spring.boot.config.SpringBootRedisConfig"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "j2cache.spring.boot.config.SpringBootRedisConfig",
+      "name": "spring.redis.host",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "j2cache.spring.boot.config.SpringBootRedisConfig",
+      "name": "spring.redis.password",
+      "type": "java.lang.String"
+    }
+  ]
+}

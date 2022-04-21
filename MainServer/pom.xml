@@ -40,4 +40,61 @@
     </dependencies>
 
 
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <!-- 打jar包时，只打包class文件 -->
+                        <include>**/*.class</include>
+                        <include>**/*.properties</include>
+                    </includes>
+                    <archive>
+                        <manifest>
+                            <!-- 打包时 MANIFEST.MF文件记录时间戳版本 -->
+                            <useUniqueVersions>true</useUniqueVersions>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                    </archive>
+                    <!-- 输出到output目录下 -->
+                    <outputDirectory>${project.build.directory}/output/</outputDirectory>
+                </configuration>
+                <inherited>false</inherited>
+            </plugin>
+            <!-- 项目依赖插件(把项目依赖的jar包打包成一个lib文件夹 ) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${version.plugin.org.apache.maven.plugins.maven-dependency-plugin}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${version.plugin.org.apache.maven.plugins.maven-assembly-plugin}</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>main.java.ServerMina</mainClass>
+                        </manifest>
+                    </archive>
+                    <finalName>${project.artifactId}-${project.version}</finalName>
+                </configuration>
+            </plugin>
+            <!-- 项目资源插件(拷贝config里面的所有文件) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
