@@ -1,2 +1,4 @@
 # ServerMina
-服务器使用mina框架进行开发
+服务器采用mina框架进行开发
+自定义解码编码加密解密处理
+采用redis guava caffeine作为缓存实现服务器和客户端的及时通讯
